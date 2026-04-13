@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { decomposeGoal } from "../lib/openai";
+import { decomposeGoal } from "../lib/openai.js";
 
 vi.mock("openai", () => ({
   default: vi.fn().mockImplementation(() => ({

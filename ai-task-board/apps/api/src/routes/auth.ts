@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
-import { auth } from "../lib/auth";
+import { auth } from "../lib/auth.js";
 
 export async function authRoutes(app: FastifyInstance) {
   // Delegate all /api/auth/* requests to better-auth handler

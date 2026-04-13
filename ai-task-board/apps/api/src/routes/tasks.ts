@@ -1,7 +1,7 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { z } from "zod";
-import { prisma } from "../lib/prisma";
-import { auth } from "../lib/auth";
+import { prisma } from "../lib/prisma.js";
+import { auth } from "../lib/auth.js";
 
 async function getSession(request: FastifyRequest) {
   const url = new URL(request.url, `http://${request.headers.host || "localhost"}`);

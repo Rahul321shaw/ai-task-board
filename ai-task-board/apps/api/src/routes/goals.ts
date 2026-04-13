@@ -1,8 +1,8 @@
 import { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { z } from "zod";
-import { prisma } from "../lib/prisma";
-import { auth } from "../lib/auth";
-import { decomposeGoal } from "../lib/openai";
+import { prisma } from "../lib/prisma.js";
+import { auth } from "../lib/auth.js";
+import { decomposeGoal } from "../lib/openai.js";
 
 async function getSession(request: FastifyRequest) {
   const url = new URL(request.url, `http://${request.headers.host || "localhost"}`);

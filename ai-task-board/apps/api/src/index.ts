@@ -1,8 +1,8 @@
 import Fastify from "fastify";
 import cors from "@fastify/cors";
-import { authRoutes } from "./routes/auth";
-import { goalRoutes } from "./routes/goals";
-import { taskRoutes } from "./routes/tasks";
+import { authRoutes } from "./routes/auth.js";
+import { goalRoutes } from "./routes/goals.js";
+import { taskRoutes } from "./routes/tasks.js";
 
 const app = Fastify({ logger: true });
 
