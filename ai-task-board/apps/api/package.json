@@ -1,0 +1,32 @@
+{
+  "name": "@ai-task-board/api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate deploy",
+    "db:generate": "prisma generate",
+    "db:studio": "prisma studio",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ai-task-board/shared": "workspace:*",
+    "@fastify/cors": "^10.0.0",
+    "@prisma/client": "^6.0.0",
+    "fastify": "^5.2.0",
+    "openai": "^4.77.0",
+    "zod": "^3.24.0",
+    "better-auth": "^1.2.0",
+    "@better-auth/prisma-adapter": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "prisma": "^6.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
