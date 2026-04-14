@@ -27,9 +27,24 @@ export async function authRoutes(app: FastifyInstance) {
     const response = await auth.handler(webRequest);
 
     reply.status(response.status);
+
+    // Handle Set-Cookie specially — multiple cookies must be set individually
+    // to prevent header collapsing, which breaks session persistence
+    const setCookieValues: string[] = [];
     response.headers.forEach((value, key) => {
-      reply.header(key, value);
+      if (key.toLowerCase() === "set-cookie") {
+        // Collect all set-cookie values to set as array
+        setCookieValues.push(...value.split(", ").reduce((acc: string[], part: string) => {
+          // Split on ", " that precede a cookie name=value pattern
+          return acc.concat(part);
+        }, []));
+      } else {
+        reply.header(key, value);
+      }
     });
+    if (setCookieValues.length > 0) {
+      reply.header("set-cookie", setCookieValues);
+    }
 
     const body = await response.text();
     reply.send(body);
